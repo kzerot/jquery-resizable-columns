@@ -15,6 +15,10 @@ Resizable table columns for jQuery. **[Live Demo](http://dobtco.github.io/jquery
 
 ```
 <table>
+  <col width="30" /> 
+  <col width="30" /> 
+  <col width="30" /> 
+  <col width="30" /> 
   <thead>
     <tr>
       <th>#</th>
@@ -38,6 +42,7 @@ Resizable table columns for jQuery. **[Live Demo](http://dobtco.github.io/jquery
 #### Persist column sizes
 
 To save column sizes on page reload (or js re-rendering), just pass an object that responds to `get` and `set`. You'll also have to give your &lt;table&gt; a `data-resizable-columns-id` attribute, and your &lt;th&gt;s `data-resizable-column-id` attributes.
+Data from <col> is initial data.
 
 ```
 <script src="libs/jquery.js"></script>
@@ -45,6 +50,10 @@ To save column sizes on page reload (or js re-rendering), just pass an object th
 <script src="jquery.resizableColumns.js"></script>
 
 <table data-resizable-columns-id="demo-table">
+  <col width="30" /> 
+  <col width="30" /> 
+  <col width="30" /> 
+  <col width="30" /> 
   <thead>
     <tr>
       <th data-resizable-column-id="#">#</th>
