@@ -1,11 +1,8 @@
 jquery-resizable-columns
+col-version
 =======================
-
-Resizable table columns for jQuery. **[Live Demo](http://dobtco.github.io/jquery-resizable-columns)**
-
-**New and Improved!** *Now tested and working on Chrome & Firefox (Mac + Windows), and IE 9 + 10. Other browsers might work too, just haven't had time to check.*
-
-**Size:** < 3kb minified
+Version for work with single col's. (not grouped)
+I know, it's don't very good, but sometime you can need that.
 
 #### Dependencies
 - jQuery
