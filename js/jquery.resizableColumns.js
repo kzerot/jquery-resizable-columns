@@ -6,8 +6,16 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
   parseWidth = function(node) {
     return parseFloat(node.style.width.replace('%', ''));
   };
-  setWidth = function(node, width) {
-    width = width.toFixed(2);
+  setWidth = function (node, width) {
+      var tb = '';
+      if (!this.$table)
+          tb = $(node).parent().parent().parent();
+      else
+          tb = this.$table;
+      var cols = tb.find('colgroup  > col');
+      var col = cols[$(node).index()];
+      width = width.toFixed(2);
+      col.style.width = "" + width + "%";
     return node.style.width = "" + width + "%";
   };
   pointerX = function(e) {
@@ -36,7 +44,9 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       }));
     }
 
-    ResizableColumns.prototype.getColumnId = function($el) {
+    ResizableColumns.prototype.getColumnId = function ($el) {
+        if (!this.$table.data('resizable-columns-id') || !$el.data('resizable-column-id') || $el.data('resizable-column-id') == 'undefined' || this.$table.data('resizable-columns-id') == 'undefined')
+            return null;
       return this.$table.data('resizable-columns-id') + '-' + $el.data('resizable-column-id');
     };
 
@@ -111,7 +121,7 @@ var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments)
       return this.$tableHeaders.each(function(_, el) {
         var $el, width;
         $el = $(el);
-        if ((_this.options.store != null) && (width = _this.options.store.get(_this.getColumnId($el)))) {
+        if ((_this.options.store != null) && _this.getColumnId($el) && (width = _this.options.store.get(_this.getColumnId($el)))) {
           return setWidth($el[0], width);
         }
       });
